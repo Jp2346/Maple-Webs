@@ -2,6 +2,7 @@ function scrollToPortfolio() {
     document.getElementById("portfolio").scrollIntoView({ behavior: "smooth" });
 }
 
+// Fade-in animations on scroll
 const elements = document.querySelectorAll('.card, .portfolio-item');
 
 const observer = new IntersectionObserver(entries => {
