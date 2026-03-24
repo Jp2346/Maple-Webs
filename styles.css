@@ -58,35 +58,26 @@ body {
   font-size: 2.5rem;
 }
 
-.hero button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hero button:hover {
-  background: var(--accent);
-}
-
+/* Hero CTA button */
 .hero-btn {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
+  margin-top: 25px;
+  padding: 14px 30px;
   background: var(--primary);
   color: white;
-  border-radius: 8px;
-  text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  animation: pulseLoop 2.5s infinite ease-in-out; /* subtle pulse */
 }
 
 .hero-btn:hover {
   background: var(--accent);
-  transform: scale(1.05);
+  transform: scale(1.08); /* grows slightly on hover */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .section {
@@ -107,6 +98,7 @@ body {
   border-radius: 10px;
   width: 250px;
   transition: transform 0.3s;
+  animation: floatLoop 4s infinite ease-in-out;
 }
 
 .card:hover {
@@ -164,18 +156,34 @@ footer {
 }
 
 .portfolio-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .portfolio-item .overlay {
-    transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .portfolio-item:hover .overlay {
-    background: rgba(0,0,0,0.4); /* slightly lighter overlay on hover */
+  background: rgba(0,0,0,0.4); /* slightly lighter overlay on hover */
+}
+
+/* ===== Animations ===== */
+
+/* Pulse animation for hero button */
+@keyframes pulseLoop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Float animation for cards */
+@keyframes floatLoop {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }
