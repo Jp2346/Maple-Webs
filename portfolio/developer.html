@@ -8,38 +8,63 @@
 <style>
 body {background:#f4f7f5; color:#1c1c1c; font-family: Arial,sans-serif;}
 header {text-align:center; padding:60px 20px; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,0.05);}
-h1 {color:#2f5d50;}
-section {max-width:1100px; margin:auto; padding:40px 20px;}
-.card {background:white; padding:20px; border-radius:10px; margin:20px 0;}
+header h1 {color:#2f5d50; font-size:2.5rem; margin-bottom:10px;}
+header p {font-size:1.2rem; margin-bottom:20px;}
 button {background:#2f5d50; color:#fff; border:none; padding:10px 20px; cursor:pointer; transition:.3s;}
 button:hover {background:#7fb069;}
-ul {list-style-type: square;}
+.section {max-width:1100px; margin:auto; padding:40px 20px;}
+.projects {display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+.project-card {background:white; padding:20px; border-radius:10px; flex:1 1 250px; transition: transform 0.3s;}
+.project-card:hover {transform: translateY(-10px);}
+.skills {display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:20px;}
+.skill {background:white; padding:15px; border-radius:10px; flex:1 1 150px; text-align:center; transition: transform 0.3s;}
+.skill:hover {transform: translateY(-5px);}
+@media(max-width:768px){header h1{font-size:1.8rem}}
 </style>
 </head>
 <body>
+
 <header>
   <h1>Dev Portfolio</h1>
-  <p>Minimal, clean, and professional showcase.</p>
-</header>
-<section>
-  <h2>Projects</h2>
-  <div class="card">
-    <h3>Project One</h3>
-    <p>Responsive web app built with HTML, CSS, JS.</p>
-  </div>
-  <div class="card">
-    <h3>Project Two</h3>
-    <p>API integration and dynamic dashboard.</p>
-  </div>
-</section>
-<section>
-  <h2>Skills</h2>
-  <ul>
-    <li>HTML/CSS/JS</li>
-    <li>React & Node.js</li>
-    <li>Python & C++</li>
-  </ul>
+  <p>Minimal, modern, and professional showcase.</p>
   <button onclick="window.history.back()">Back to Portfolio</button>
+</header>
+
+<section class="section">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project-card">
+      <h3>Project One</h3>
+      <p>Responsive web app built with HTML, CSS, JS.</p>
+    </div>
+    <div class="project-card">
+      <h3>Project Two</h3>
+      <p>API integration and dynamic dashboard.</p>
+    </div>
+    <div class="project-card">
+      <h3>Project Three</h3>
+      <p>Full-stack app using React and Node.js.</p>
+    </div>
+  </div>
 </section>
+
+<section class="section">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">HTML/CSS/JS</div>
+    <div class="skill">React & Node.js</div>
+    <div class="skill">Python & C++</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Contact</h2>
+  <p>Email: dev@maplewebs.com</p>
+</section>
+
+<footer>
+  <p>© 2026 Maple Webs</p>
+</footer>
+
 </body>
-</html>
+</ht
