@@ -322,3 +322,16 @@ body {
   font-size: 1rem;
   margin: 0;
 }
+
+/* Dark mode overrides */
+body.dark {
+  --primary: #7fb069;
+  --accent: #2f5d50;
+  --bg: #121212;
+  --text: #f4f7f5;
+}
+
+/* Smooth transition */
+body {
+  transition: background 0.3s, color 0.3s;
+}
