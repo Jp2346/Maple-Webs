@@ -187,3 +187,9 @@ footer {
   50% { transform: translateY(-8px); }
   100% { transform: translateY(0); }
 }
+
+/* Highlight middle plan */
+.card:nth-child(2) {
+  transform: scale(1.05);
+  border: 2px solid var(--accent);
+}
