@@ -270,3 +270,20 @@ body {
   top: -10px;
   right: 10px;
 }
+
+.navbar a.active {
+  border-bottom: 2px solid var(--accent);
+}
+
+.card {
+  min-height: 220px; /* keeps alignment neat */
+}
+
+.scroll-indicator {
+  animation: bounce 1.5s infinite, fadePulse 2.5s infinite;
+}
+
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
