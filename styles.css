@@ -247,3 +247,15 @@ body {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
 }
+
+.section {
+  padding: 100px 0;
+}
+
+.hero-btn {
+  letter-spacing: 0.5px;
+}
+
+#pricing .card {
+  min-height: 220px;
+}
