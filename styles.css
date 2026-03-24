@@ -193,3 +193,45 @@ footer {
   transform: scale(1.05);
   border: 2px solid var(--accent);
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+body {
+  background: linear-gradient(-45deg, #f4f7f5, #e6efe9, #ffffff, #f4f7f5);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.hero-btn:active {
+  transform: scale(0.95);
+}
