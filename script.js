@@ -52,3 +52,48 @@ const observer = new IntersectionObserver(entries => {
 
 // Observe all elements
 fadeElements.forEach(el => observer.observe(el));
+
+const fadeElements = document.querySelectorAll('.section, .card, .portfolio-item');
+
+// Initialize all elements to hidden
+fadeElements.forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = "translateY(20px)";
+});
+
+// IntersectionObserver for fade-in with stagger
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+            // Stagger children inside sections
+            if (entry.target.classList.contains('section')) {
+                const staggerChildren = entry.target.querySelectorAll('.card, .portfolio-item');
+                staggerChildren.forEach((child, index) => {
+                    setTimeout(() => {
+                        child.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+                        child.style.opacity = 1;
+                        child.style.transform = "translateY(0)";
+                    }, index * 150); // 150ms stagger per child
+                });
+            }
+
+            // Fade in the section itself
+            entry.target.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+
+        } else {
+            // Optionally fade out when leaving viewport
+            if (!entry.target.classList.contains('section')) {
+                entry.target.style.opacity = 0;
+                entry.target.style.transform = "translateY(20px)";
+            }
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+// Observe all elements
+fadeElements.forEach(el => observer.observe(el));
