@@ -287,3 +287,29 @@ body {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
+
+/* Services section heading */
+#services h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+/* Services card styling */
+#services .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center content */
+  align-items: center;     /* horizontally center */
+  text-align: center;      /* center text */
+  padding: 40px 20px;
+  min-height: 180px;
+  font-size: 1.1rem;
+}
+
+/* Optional: slightly increase heading inside each card */
+#services .card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
