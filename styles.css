@@ -295,21 +295,30 @@ body {
   color: var(--primary);
 }
 
-/* Services card styling */
+/*card fix*/
 #services .card {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertically center content */
-  align-items: center;     /* horizontally center */
-  text-align: center;      /* center text */
+  justify-content: center;  
+  align-items: center;      
+  text-align: center;
   padding: 40px 20px;
   min-height: 180px;
   font-size: 1.1rem;
+  background: white;
+  border-radius: 10px;
+  transition: transform 0.3s;
 }
 
-/* Optional: slightly increase heading inside each card */
+/* Card headings */
 #services .card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
   color: var(--primary);
+}
+
+/* Card paragraphs */
+#services .card p {
+  font-size: 1rem;
+  margin: 0;
 }
