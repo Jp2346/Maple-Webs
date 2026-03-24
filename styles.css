@@ -72,6 +72,23 @@ body {
   background: var(--accent);
 }
 
+.hero-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.hero-btn:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
 .section {
   padding: 60px 0;
   text-align: center;
