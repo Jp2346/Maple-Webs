@@ -1,4 +1,7 @@
-// Fade-in on scroll
+function scrollToPortfolio() {
+    document.getElementById("portfolio").scrollIntoView({ behavior: "smooth" });
+}
+
 const elements = document.querySelectorAll('.card, .portfolio-item');
 
 const observer = new IntersectionObserver(entries => {
@@ -14,13 +17,4 @@ elements.forEach(el => {
     el.style.opacity = 0;
     el.style.transform = "translateY(20px)";
     observer.observe(el);
-});
-
-// Smooth scroll
-document.querySelectorAll('a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href'))
-            .scrollIntoView({ behavior: 'smooth' });
-    });
 });
