@@ -145,3 +145,20 @@ footer {
     font-size: 1.8rem;
   }
 }
+
+.portfolio-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.portfolio-item .overlay {
+    transition: background 0.3s ease;
+}
+
+.portfolio-item:hover .overlay {
+    background: rgba(0,0,0,0.4); /* slightly lighter overlay on hover */
+}
