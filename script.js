@@ -2,20 +2,33 @@ function scrollToPortfolio() {
     document.getElementById("portfolio").scrollIntoView({ behavior: "smooth" });
 }
 
-// Fade-in animations on scroll
-const elements = document.querySelectorAll('.card, .portfolio-item');
+// Select all elements to animate
+const sections = document.querySelectorAll('.section');
 
-const observer = new IntersectionObserver(entries => {
+// Function to animate child elements staggered
+function animateStaggered(section) {
+    const children = section.querySelectorAll('.card, .portfolio-item');
+    children.forEach((child, index) => {
+        child.style.opacity = 0;
+        child.style.transform = "translateY(20px)";
+        setTimeout(() => {
+            child.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+            child.style.opacity = 1;
+            child.style.transform = "translateY(0)";
+        }, index * 150); // 150ms delay between each
+    });
+}
+
+// IntersectionObserver for sections
+const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = "translateY(0)";
+            animateStaggered(entry.target);
         }
     });
+}, {
+    threshold: 0.1
 });
 
-elements.forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = "translateY(20px)";
-    observer.observe(el);
-});
+// Observe each section
+sections.forEach(section => sectionObserver.observe(section));
