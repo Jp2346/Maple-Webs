@@ -65,3 +65,20 @@ const observer = new IntersectionObserver(entries => {
 
 // Observe all section-related elements
 fadeSections.forEach(el => observer.observe(el));
+
+const toggle = document.getElementById("darkToggle");
+
+// Load saved mode
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+});
