@@ -11,6 +11,7 @@ const hideElements = (elements) => {
 hideElements(heroElements);
 hideElements(fadeSections);
 
+
 const animateElements = (elements, stagger = 250, horizontal = false) => {
   elements.forEach((el, i) => {
     setTimeout(() => {
@@ -54,6 +55,8 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 
+
+
 fadeSections.forEach(el => observer.observe(el));
 
 const toggle = document.getElementById("darkToggle");
@@ -69,3 +72,5 @@ toggle.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
+
+
