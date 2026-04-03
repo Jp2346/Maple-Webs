@@ -1,71 +1,41 @@
-const heroElements = document.querySelectorAll('.hero h2, .hero p, .hero .hero-btn, .hero .scroll-indicator');
-const fadeSections = document.querySelectorAll('.section, .card, .portfolio-item');
+const faders = document.querySelectorAll('.fade-in');
+const staggerContainers = document.querySelectorAll('.stagger');
 
-const hideElements = (elements) => {
-  elements.forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = "translateY(20px)";
-  });
-};
+const observerOptions = { threshold: 0.2 };
 
-hideElements(heroElements);
-hideElements(fadeSections);
-
-const animateElements = (elements, stagger = 250, horizontal = false) => {
-  elements.forEach((el, i) => {
-    setTimeout(() => {
-      el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
-      el.style.opacity = 1;
-      if(horizontal) {
-        const direction = i % 2 === 0 ? -20 : 20;
-        el.style.transform = "translateX(0) translateY(0)";
-      } else {
-        el.style.transform = "translateY(0)";
-      }
-    }, i * stagger);
-  });
-};
-
-window.addEventListener('DOMContentLoaded', () => {
-  animateElements(heroElements, 300);
-});
-
-const observer = new IntersectionObserver(entries => {
+const fadeInObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      if (entry.target.classList.contains('section')) {
-        const children = entry.target.querySelectorAll('.card, .portfolio-item');
-        children.forEach((child, i) => {
-          child.style.opacity = 0;
-          const direction = i % 2 === 0 ? -20 : 20;
-          child.style.transform = `translateX(${direction}px) translateY(20px)`;
-        });
-        animateElements(children, 250, true);
+      entry.target.classList.add('visible');
+      if(entry.target.classList.contains('stagger')) {
+        const children = entry.target.children;
+        for (let i = 0; i < children.length; i++) {
+          setTimeout(() => children[i].classList.add('visible'), i * 150);
+        }
       }
-      entry.target.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = "translateY(0)";
-    } else {
-      if (!entry.target.classList.contains('section')) {
-        entry.target.style.opacity = 0;
-        entry.target.style.transform = "translateY(20px)";
-      }
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, observerOptions);
 
-fadeSections.forEach(el => observer.observe(el));
+faders.forEach(el => fadeInObserver.observe(el));
+staggerContainers.forEach(el => fadeInObserver.observe(el));
+
+window.addEventListener('DOMContentLoaded', () => {
+  const heroElements = document.querySelectorAll('.hero .fade-in');
+  heroElements.forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 200);
+  });
+});
 
 const toggle = document.getElementById("darkToggle");
-if (localStorage.getItem("theme") === "dark") {
+if (toggle && localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
-});
+if(toggle){
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  });
+}
